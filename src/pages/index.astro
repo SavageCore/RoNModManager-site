@@ -1,0 +1,126 @@
+---
+import { Image } from "astro:assets";
+import SiteLayout from "../layouts/SiteLayout.astro";
+import modsScreenshot from "../assets/screenshots/mods-dark.png";
+import release from "../data/release.json";
+
+const base = import.meta.env.BASE_URL;
+const pageTitle = "RoN Mod Manager - Ready or Not mods, ready to deploy";
+const pageDescription =
+  "RoN Mod Manager installs and organises Ready or Not mods on Windows and Linux, with profiles, collections and shareable modpacks.";
+---
+
+<SiteLayout title={pageTitle} description={pageDescription}>
+  <section class="ron-hero" aria-labelledby="hero-heading">
+    <p class="kicker">Windows and Linux</p>
+    <h1 id="hero-heading">Your mods. Your squad. Ready to deploy.</h1>
+    <hr class="accent-rule" aria-hidden="true" />
+    <p class="lede">
+      RoN Mod Manager installs, updates and organises Ready or Not mods, so your
+      whole squad can launch with the same loadout.
+    </p>
+    <div class="button-row">
+      <a class="button button-primary" href={`${base}downloads/`}>
+        Download {release.tag} for your system
+      </a>
+      <a class="button button-ghost" href={`${base}docs/getting-started/`}>
+        Getting started
+      </a>
+    </div>
+    <figure>
+      <Image
+        src={modsScreenshot}
+        alt="RoN Mod Manager showing the installed mods list"
+        format="png"
+        widths={[680, 1020, 1280]}
+        sizes="(max-width: 68rem) 100vw, 68rem"
+      />
+      <figcaption>The installed mods list in RoN Mod Manager.</figcaption>
+    </figure>
+  </section>
+
+  <section aria-labelledby="features-heading">
+    <h2 id="features-heading">What it does</h2>
+    <ul class="ron-features">
+      <li>
+        <h3>Mod sources</h3>
+        <p>
+          Install mods from mod.io and Nexus Mods with your accounts linked in
+          the app.
+        </p>
+      </li>
+      <li>
+        <h3>Profiles and collections</h3>
+        <p>
+          Keep separate loadouts for solo runs, co-op nights and roleplay
+          servers, and switch between them.
+        </p>
+      </li>
+      <li>
+        <h3>Hosted modpacks</h3>
+        <p>
+          Share one link and everyone installs the same set of mods, then
+          updates together.
+        </p>
+      </li>
+    </ul>
+  </section>
+
+  <section aria-labelledby="steps-heading">
+    <h2 id="steps-heading">Get running in three steps</h2>
+    <ol class="ron-steps">
+      <li>
+        <h3>Install the app</h3>
+        <p>
+          Grab the build for your system from{" "}
+          <a href={`${base}downloads/`}>downloads</a>.
+        </p>
+      </li>
+      <li>
+        <h3>Link your mod sources</h3>
+        <p>Connect mod.io and Nexus Mods in the app settings.</p>
+      </li>
+      <li>
+        <h3>Install your first mod</h3>
+        <p>
+          Follow the{" "}
+          <a href={`${base}docs/getting-started/`}>getting started guide</a> to
+          install one mod end to end.
+        </p>
+      </li>
+    </ol>
+  </section>
+
+  <section aria-labelledby="download-heading">
+    <h2 id="download-heading">Ready when your squad is</h2>
+    <p>
+      Free and open source. Current release {release.tag}, for Windows x64 and
+      Linux x86_64.
+    </p>
+    <div class="button-row">
+      <a class="button button-primary" href={`${base}downloads/`}>
+        Get RoN Mod Manager
+      </a>
+    </div>
+    <p class="ron-notice">
+      Unofficial community project. Not affiliated with or endorsed by VOID
+      Interactive.
+    </p>
+  </section>
+</SiteLayout>
+
+<style>
+  .kicker {
+    font-family: var(--ron-font-display);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--ron-muted);
+    margin: 0 0 0.5rem;
+  }
+  .ron-hero figcaption {
+    color: var(--ron-muted);
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+  }
+</style>

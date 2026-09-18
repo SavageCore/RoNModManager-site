@@ -1,0 +1,49 @@
+---
+const base = import.meta.env.BASE_URL;
+---
+
+<footer class="ron-footer">
+  <div class="ron-footer-inner">
+    <p>
+      <strong>RoN Mod Manager</strong> is an unofficial community project. Not
+      affiliated with or endorsed by VOID Interactive.
+    </p>
+    <ul>
+      <li>
+        <a href={`${base}downloads/`}>Downloads</a>
+      </li>
+      <li>
+        <a href={`${base}docs/`}>Docs</a>
+      </li>
+      <li>
+        <a
+          href="https://github.com/SavageCore/RoNModManager"
+          rel="noopener noreferrer"
+        >
+          GitHub
+        </a>
+      </li>
+    </ul>
+  </div>
+</footer>
+
+<style>
+  .ron-footer {
+    border-top: 1px solid var(--ron-border);
+    margin-top: var(--ron-space-lg);
+  }
+  .ron-footer-inner {
+    max-width: var(--ron-max-width);
+    margin: 0 auto;
+    padding: var(--ron-space-lg) var(--ron-space);
+    color: var(--ron-muted);
+  }
+  .ron-footer ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    list-style: none;
+    margin: 1rem 0 0;
+    padding: 0;
+  }
+</style>

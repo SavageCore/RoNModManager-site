@@ -1,0 +1,102 @@
+/* Documentation reading adjustments on top of Starlight defaults. */
+
+@import "./tokens.css";
+@import "@fontsource/rajdhani/600.css";
+@import "@fontsource/rajdhani/700.css";
+
+:root {
+  --sl-content-width: 48rem;
+  /* Share the marketing display font with the custom pages. */
+  --sl-font: var(--ron-font-display), var(--sl-font-system);
+}
+
+/* Left nav narrower than stock; the right ToC column keeps Starlight's
+   stock width so it does not stretch into empty space. */
+@media (min-width: 72rem) {
+  .sidebar-content {
+    --sl-sidebar-width: 15rem;
+  }
+}
+
+/* Dark theme: near-black canvas shared with the custom pages, true-red
+   accent. accent-high is brightened so text links keep 4.5:1 contrast on
+   the dark canvas; accent-low is a dark red tint, never Starlight blue. */
+:root[data-theme="dark"] {
+  --sl-color-bg: var(--ron-background);
+  --sl-color-bg-nav: var(--ron-surface);
+  --sl-color-bg-sidebar: var(--ron-surface);
+  --sl-color-hairline: var(--ron-border);
+  --sl-color-hairline-light: var(--ron-border);
+  /* Warm off-white text scale shared with the custom pages. */
+  --sl-color-white: #ffffff;
+  --sl-color-gray-1: #f2f1ec;
+  --sl-color-gray-2: #e6e2d6;
+  --sl-color-gray-3: #b9bcc2;
+  --sl-color-text: #f2f1ec;
+  --sl-color-accent: #c8102e;
+  --sl-color-accent-high: #f04452;
+  --sl-color-accent-low: #3a0d13;
+}
+
+/* Light theme: Starlight light surfaces, brand-red accent that keeps
+   contrast on white. */
+:root[data-theme="light"] {
+  --sl-color-accent: #c8102e;
+  --sl-color-accent-high: #9c0c24;
+  --sl-color-accent-low: #f6d4d8;
+}
+
+/* Current-page sidebar item: white text on brand red in both themes. */
+:root[data-theme="dark"] .sidebar-content a[aria-current="page"],
+:root[data-theme="light"] .sidebar-content a[aria-current="page"] {
+  color: #ffffff;
+  background-color: #c8102e;
+}
+
+/* Docs social icons: off-white with brand-red hover, in both themes. */
+:root[data-theme="dark"] .social-icons a,
+:root[data-theme="light"] .social-icons a {
+  color: var(--ron-text, #f2f1ec);
+}
+:root[data-theme="light"] .social-icons a {
+  color: #101114;
+}
+:root[data-theme="dark"] .social-icons a:hover,
+:root[data-theme="light"] .social-icons a:hover {
+  color: #c8102e;
+}
+
+/* Docs site title: off-white like the marketing wordmark, red underline. */
+:root[data-theme="dark"] .site-title,
+:root[data-theme="light"] .site-title {
+  color: var(--ron-text, #f2f1ec);
+  text-decoration: underline;
+  text-decoration-color: #c8102e;
+  text-underline-offset: 0.2em;
+}
+:root[data-theme="light"] .site-title {
+  color: #101114;
+}
+
+/* Social icons: off-white resting, brand-red hover, both themes. */
+:root[data-theme="dark"] .social-icons a,
+:root[data-theme="light"] .social-icons a {
+  color: var(--ron-text, #f2f1ec);
+}
+:root[data-theme="light"] .social-icons a {
+  color: #101114;
+}
+:root[data-theme="dark"] .social-icons a:hover,
+:root[data-theme="light"] .social-icons a:hover {
+  color: #c8102e;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms;
+    animation-iteration-count: 1;
+    transition-duration: 0.01ms;
+  }
+}

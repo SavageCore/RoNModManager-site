@@ -1,0 +1,178 @@
+/* Custom marketing pages: homepage and downloads. */
+
+@import "./tokens.css";
+
+.ron-page {
+  background: var(--ron-background);
+  color: var(--ron-text);
+  font-family: var(--ron-font-body);
+  line-height: 1.6;
+}
+
+.ron-page main {
+  max-width: var(--ron-max-width);
+  margin: 0 auto;
+  padding: var(--ron-space-lg) var(--ron-space);
+}
+
+.ron-page h1,
+.ron-page h2,
+.ron-page h3 {
+  font-family: var(--ron-font-display);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  line-height: 1.1;
+}
+
+.ron-page h1 {
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  margin: 0 0 var(--ron-space);
+}
+
+.ron-page h2 {
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  margin: var(--ron-space-lg) 0 var(--ron-space);
+}
+
+.ron-page .accent-rule {
+  width: 4rem;
+  height: 0.25rem;
+  background: var(--ron-accent);
+  border: 0;
+  margin: 0 0 var(--ron-space);
+}
+
+.ron-page a {
+  color: var(--ron-text);
+  text-decoration: underline;
+  text-decoration-color: var(--ron-accent);
+  text-underline-offset: 0.2em;
+  transition: color 0.15s ease;
+}
+
+.ron-page a:hover {
+  color: var(--ron-accent-contrast);
+  background: var(--ron-accent);
+  text-decoration-color: var(--ron-accent);
+}
+
+.ron-page a:focus-visible,
+.ron-page button:focus-visible {
+  outline: 2px solid var(--ron-focus);
+  outline-offset: 2px;
+}
+
+.ron-page .button-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin: var(--ron-space) 0;
+}
+
+.ron-page .button {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  font-family: var(--ron-font-display);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  text-decoration: none;
+  border: 2px solid var(--ron-accent);
+  transition:
+    background 0.15s ease,
+    color 0.15s ease;
+}
+
+.ron-page .button-primary {
+  background: var(--ron-accent);
+  color: var(--ron-accent-contrast);
+}
+
+.ron-page .button-primary:hover {
+  background: var(--ron-accent-contrast);
+  color: var(--ron-accent);
+}
+
+.ron-page .button-ghost {
+  background: transparent;
+  color: var(--ron-text);
+}
+
+.ron-page .button-ghost:hover {
+  background: var(--ron-accent);
+  color: var(--ron-accent-contrast);
+}
+
+.ron-hero {
+  padding: var(--ron-space-lg) 0;
+}
+
+.ron-hero p.lede {
+  font-size: 1.25rem;
+  max-width: var(--ron-reading-width);
+  color: var(--ron-muted);
+}
+
+.ron-hero figure {
+  margin: var(--ron-space-lg) 0 0;
+}
+
+.ron-hero img {
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--ron-border);
+}
+
+.ron-features {
+  display: grid;
+  gap: var(--ron-space);
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  list-style: none;
+  padding: 0;
+}
+
+.ron-features li {
+  background: var(--ron-surface);
+  border: 1px solid var(--ron-border);
+  border-top: 3px solid var(--ron-accent);
+  padding: var(--ron-space);
+}
+
+.ron-steps {
+  counter-reset: step;
+  list-style: none;
+  padding: 0;
+  display: grid;
+  gap: var(--ron-space);
+  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+}
+
+.ron-steps li {
+  border: 1px solid var(--ron-border);
+  padding: var(--ron-space);
+}
+
+.ron-steps li::before {
+  counter-increment: step;
+  content: "0" counter(step);
+  display: block;
+  font-family: var(--ron-font-display);
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--ron-accent);
+}
+
+.ron-notice {
+  border: 1px solid var(--ron-border);
+  border-left: 3px solid var(--ron-accent);
+  background: var(--ron-surface);
+  padding: var(--ron-space);
+  max-width: var(--ron-reading-width);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ron-page * {
+    animation: none;
+    transition: none;
+  }
+}

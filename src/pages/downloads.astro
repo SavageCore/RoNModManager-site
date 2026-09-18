@@ -1,0 +1,110 @@
+---
+import DownloadChooser from "../components/DownloadChooser.astro";
+import SiteLayout from "../layouts/SiteLayout.astro";
+import release from "../data/release.json";
+
+const pageTitle = "Downloads - RoN Mod Manager";
+const pageDescription =
+  "Download RoN Mod Manager for Windows or Linux, with native packages, AppImage, Flatpak and the browser userscript.";
+---
+
+<SiteLayout title={pageTitle} description={pageDescription}>
+  <h1>Downloads</h1>
+  <p>
+    Current release: <strong>{release.tag}</strong>
+    {release.publishedAt && (
+      <>
+        {" "}
+        (published{" "}
+        <time datetime={release.publishedAt}>
+          {release.publishedAt.slice(0, 10)}
+        </time>
+        )
+      </>
+    )}
+    . All files come from{" "}
+    <a href={release.releaseUrl} rel="noopener">
+      GitHub Releases
+    </a>
+    .
+  </p>
+
+  <h2>Windows</h2>
+  <p>
+    On Windows 10 and 11, grab the{" "}
+    <a href={release.assets["windows-setup"].url} download>
+      Setup .exe
+    </a>
+    .
+  </p>
+
+  <h2>Linux</h2>
+  <p>All Linux downloads are x86_64 builds. Pick the format that fits:</p>
+  <ul>
+    <li>
+      <strong>.deb</strong> for Debian, Ubuntu and derivatives, or{" "}
+      <strong>.rpm</strong> for Fedora, openSUSE and derivatives.
+    </li>
+    <li>
+      <strong>AppImage</strong> when no native package fits; it runs portably on
+      most distributions.
+    </li>
+    <li>
+      <strong>Flatpak</strong> for a sandboxed install with updates through the{" "}
+      <a href={`${import.meta.env.BASE_URL}docs/installation/flatpak/`}>
+        Flatpak remote
+      </a>
+      .
+    </li>
+    <li>
+      Arch users can also install{" "}
+      <a
+        href="https://aur.archlinux.org/packages/ronmodmanager-bin"
+        rel="noopener"
+      >
+        ronmodmanager-bin
+      </a>{" "}
+      from the AUR.
+    </li>
+  </ul>
+
+  <h2>Browser userscript</h2>
+  <p>
+    The optional one-click mod install script needs the desktop app installed
+    first. Full steps live in the{" "}
+    <a href={`${import.meta.env.BASE_URL}docs/userscript/`}>userscript guide</a>
+    .
+  </p>
+  <p>
+    <a
+      class="button"
+      href={release.assets.userscript.url}
+      download={release.assets.userscript.name}
+    >
+      Download userscript ({release.assets.userscript.name})
+    </a>
+  </p>
+
+  <h2>Choose your download</h2>
+  <DownloadChooser release={release} />
+
+  <h2>Release notes</h2>
+  <p>
+    Read what changed in {release.tag} on{" "}
+    <a href={release.releaseUrl} rel="noopener">
+      GitHub Releases
+    </a>
+    .
+  </p>
+
+  <p>
+    Prefer GitHub? Every file above is also on{" "}
+    <a
+      href="https://github.com/SavageCore/RoNModManager/releases"
+      rel="noopener"
+    >
+      GitHub Releases
+    </a>
+    , which always shows the newest status.
+  </p>
+</SiteLayout>

@@ -1,0 +1,23 @@
+/* Shared design tokens: near-black canvas, off-white text, red accent. */
+
+:root {
+  --ron-background: #101114;
+  --ron-surface: #181a1f;
+  --ron-raised: #202329;
+  --ron-text: #f2f1ec;
+  --ron-muted: #b9bcc2;
+  --ron-accent: #c8102e;
+  --ron-accent-contrast: #ffffff;
+  --ron-border: #2c2f34;
+  --ron-focus: #e8b4b8;
+
+  --ron-font-display: "Rajdhani", "Arial Narrow", system-ui, sans-serif;
+  --ron-font-body:
+    system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial,
+    sans-serif;
+
+  --ron-space: 1rem;
+  --ron-space-lg: 2.5rem;
+  --ron-max-width: 68rem;
+  --ron-reading-width: 48rem;
+}
