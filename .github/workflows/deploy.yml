@@ -1,8 +1,15 @@
 name: Deploy
 
 on:
-  release:
-    types: [published]
+  # Site content changes publish from main.
+  push:
+    branches: [main]
+  # Fired by RoNModManager's release.yml after every asset upload completes.
+  repository_dispatch:
+    types: [app-release]
+  # Safety net: self-heals if a dispatch is dropped or the token is unusable.
+  schedule:
+    - cron: "17 */6 * * *"
   workflow_dispatch:
 
 permissions:
