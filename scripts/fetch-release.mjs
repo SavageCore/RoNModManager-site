@@ -62,24 +62,31 @@ async function fetchReleasesPage(page) {
 }
 
 const releases = [];
+let selected = null;
 for (let page = 1; page <= MAX_PAGES; page += 1) {
   const { releases: batch, hasNext } = await fetchReleasesPage(page);
   releases.push(...batch);
   const snapshot = selectReleaseSnapshot(releases);
   if (snapshot) {
-    const payload = { ...snapshot, fetchedAt: new Date().toISOString() };
-    await mkdir(dirname(outPath), { recursive: true });
-    const tmpPath = `${outPath}.${process.pid}.tmp`;
-    await writeFile(tmpPath, `${JSON.stringify(payload, null, 2)}\n`);
-    await rename(tmpPath, outPath);
-    console.log(`Release metadata: selected ${snapshot.tag} -> ${outPath}`);
-    process.exit(0);
+    selected = snapshot;
+    break;
   }
   if (!hasNext || batch.length === 0) break;
 }
 
-console.error(
-  `No complete stable release found after scanning ${releases.length} release(s). ` +
-    "Refusing to write release metadata.",
-);
-process.exit(1);
+// Exit by falling off the end rather than process.exit(): the fetch socket is
+// still closing, and forcing an exit aborts the process on Windows.
+if (selected === null) {
+  console.error(
+    `No complete stable release found after scanning ${releases.length} release(s). ` +
+      "Refusing to write release metadata.",
+  );
+  process.exitCode = 1;
+} else {
+  const payload = { ...selected, fetchedAt: new Date().toISOString() };
+  await mkdir(dirname(outPath), { recursive: true });
+  const tmpPath = `${outPath}.${process.pid}.tmp`;
+  await writeFile(tmpPath, `${JSON.stringify(payload, null, 2)}\n`);
+  await rename(tmpPath, outPath);
+  console.log(`Release metadata: selected ${selected.tag} -> ${outPath}`);
+}
