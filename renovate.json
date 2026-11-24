@@ -8,9 +8,22 @@
       "groupName": "GitHub Actions"
     },
     {
+      "description": "upload-pages-artifact v5 uses upload-artifact v7, whose artifacts deploy-pages v5 cannot discover",
+      "matchManagers": ["github-actions"],
+      "matchPackageNames": ["actions/upload-pages-artifact"],
+      "allowedVersions": "<5"
+    },
+    {
       "description": "Group all npm dependency updates into a single PR",
       "matchManagers": ["npm"],
       "groupName": "npm dependencies"
+    },
+    {
+      "description": "TypeScript 7 (native compiler) does not yet expose the programmatic API astro check relies on. Hold major TypeScript updates until @astrojs/language-server supports it: https://github.com/withastro/roadmap/discussions/1321",
+      "matchManagers": ["npm"],
+      "matchPackageNames": ["typescript"],
+      "matchUpdateTypes": ["major"],
+      "enabled": false
     }
   ]
 }

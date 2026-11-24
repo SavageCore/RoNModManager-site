@@ -31,17 +31,19 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v7
+      - uses: pnpm/action-setup@v6
       - uses: actions/setup-node@v7
         with:
           node-version: 24
-          cache: npm
+          cache: pnpm
       - uses: actions/configure-pages@v6
-      - run: npm ci
+      - run: pnpm install --frozen-lockfile
       - name: Build site
-        run: npm run build
+        run: pnpm run build
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - uses: actions/upload-pages-artifact@v5
+      # v5 uses upload-artifact v7, which deploy-pages v5 cannot discover.
+      - uses: actions/upload-pages-artifact@7b1f4a764d45c48632c6b24a0339c27f5614fb0b # v4
         with:
           path: dist
       - id: deployment
