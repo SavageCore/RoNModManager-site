@@ -1,0 +1,23 @@
+---
+import DefaultSearch from "@astrojs/starlight/components/Search.astro";
+---
+
+<DefaultSearch />
+
+<script is:inline>
+  (() => {
+    const button = document.querySelector(
+      "site-search button[data-open-modal]",
+    );
+    if (!button) return;
+
+    const label = button.querySelector("span");
+    const labelText = label?.textContent?.trim();
+    if (!label || !labelText) return;
+
+    button.removeAttribute("aria-label");
+    label.removeAttribute("aria-hidden");
+    button.querySelector("kbd")?.setAttribute("aria-hidden", "true");
+    button.setAttribute("title", labelText);
+  })();
+</script>
