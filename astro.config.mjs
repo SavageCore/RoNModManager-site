@@ -10,6 +10,9 @@ export default defineConfig({
   trailingSlash: "always",
   integrations: [
     starlight({
+      components: {
+        Search: "./src/components/starlight/Search.astro",
+      },
       title: "RoN Mod Manager",
       description:
         "Homepage and documentation for RoN Mod Manager, a Ready or Not mod manager for Windows and Linux.",

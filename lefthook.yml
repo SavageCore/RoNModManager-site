@@ -2,17 +2,17 @@ pre-commit:
   parallel: true
   jobs:
     - name: lint
-      run: npm run lint
+      run: pnpm run lint
     - name: check
-      run: npm run check
+      run: pnpm run check
     - name: unit tests
-      run: npm run test:unit
+      run: pnpm run test:unit
 
 pre-push:
   jobs:
     - name: build
-      run: npm run build
+      run: pnpm run build
     - name: check links
-      run: npm run check:links
+      run: pnpm run check:links
     - name: e2e tests
-      run: npm run test:e2e
+      run: pnpm run test:e2e

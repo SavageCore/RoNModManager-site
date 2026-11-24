@@ -19,6 +19,16 @@ test("hosting docs page has no axe violations", async ({ page }) => {
   expect(results.violations).toEqual([]);
 });
 
+test("docs search button keeps its accessible name on mobile", async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 375, height: 812 });
+  await page.goto("./docs/modpacks/hosting/");
+  await expect(
+    page.getByRole("button", { name: "Search", exact: true }),
+  ).toBeVisible();
+});
+
 test("downloads show every option regardless of browser hints", async ({
   page,
 }) => {

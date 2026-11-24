@@ -19,7 +19,8 @@ export default defineConfig({
     },
   ],
   webServer: {
-    command: "npm run preview -- --port 4322",
+    command: "pnpm run preview --port 4322",
+    env: { ASTRO_PREVIEW_BACKGROUND: "0" },
     port: 4322,
     reuseExistingServer: !process.env.CI,
     stdout: "ignore",
